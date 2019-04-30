@@ -9,11 +9,19 @@ class App extends Component {
     ]
   }
 
+  delete = (id) => {
+    const todos = this.state.todos.filter(todo => {
+      return todo.id !== id
+    });
+    this.setState({ todos })
+    console.log("todo deleted: "+ id);
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className="todo-app container">
         <h1 className="center blue-text">TODO LIST</h1>
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos} deleteMethod={ this.delete } />
       </div>
     );
   }
